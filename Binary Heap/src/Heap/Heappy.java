@@ -1,5 +1,6 @@
 package Heap;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -8,9 +9,19 @@ import java.util.Scanner;
  */
 
 public class Heappy   {
+
     Representation rep = new Representation();
-    ArrayList<Integer> Tree= new ArrayList<Integer>() ;
+    private ArrayList<Integer> Tree = new ArrayList<Integer>();
     int test=0;
+
+
+    public ArrayList<Integer> getTree() {
+        return Tree;
+    }
+
+    public void setTree(ArrayList<Integer> tree) {
+        Tree = tree;
+    }
 
     public Heappy() {
         rep.setSize(0);
@@ -23,6 +34,13 @@ public class Heappy   {
         Heappy heap = new Heappy();
         heap.create();
 
+    }
+
+    public int getheight(int i) {
+
+        if (i == -1)
+            return 0;
+        return Math.max(getheight(Tree.get(rep.leftIndex(i))), getheight(Tree.get(rep.rightIndex(i)))) + 1;
     }
     public void create(){
         Scanner scan = new Scanner(System.in);
@@ -42,8 +60,16 @@ public class Heappy   {
             switch (choice) {
                 case 1:
                     try {
-                        System.out.println("Enter integer element to insert");
-                        insert(scan.nextInt());
+                        //System.out.println("Enter integer element to insert");
+                        // insert(scan.nextInt());
+                        insert(14);
+                        insert(100);
+                        insert(200);
+                        insert(30);
+                        insert(40);
+                        insert(60);
+                        // insert(300);
+                        GUI gui = new GUI(this, rep);
                     } catch (Exception e) {
                         System.out.println(e.getMessage());
                     }
@@ -87,13 +113,15 @@ public class Heappy   {
     {
         return  Tree.get(0);
     }
-    private void insert(int value)
+
+    public void insert(int value)
     {
         test++;
         rep.Sizeinc();
         int index = rep.getSize()-1;
         Tree.add(index,value);
         bubbleUp();
+
     }
 
     public boolean isEmpty() {
@@ -131,16 +159,26 @@ public class Heappy   {
 
         while (rep.hasParent(index) && (parent(index) < Tree.get(index)) ) {
             // parent/child are out of order; swap them
-            System.out.print(" hi "+parent(index)+"");
+            //System.out.print(" hi "+parent(index)+"");
             swap(index, rep.parentIndex(index));
             index = rep.parentIndex(index);
         }
-        System.out.print(" l "+parent(index)+"");
+        // System.out.print(" l "+parent(index)+"");
 
     }
     public int parent(int i) {
         //Get Parent of the node am standing On
         return Tree.get(rep.parentIndex(i));
+    }
+
+    public int Left(int i) {
+        //Get Parent of the node am standing On
+        return Tree.get(rep.leftIndex(i));
+    }
+
+    public int right(int i) {
+        //Get Parent of the node am standing On
+        return Tree.get(rep.rightIndex(i));
     }
     public void swap(int index1, int index2) {
         int tmp = Tree.get(index1);

@@ -19,6 +19,7 @@ public class Representation {
     public void Sizeinc() {
         size++;
     }
+
     public void Sizedec() {
         size--;
     }
@@ -30,29 +31,29 @@ public class Representation {
 
 
     public int leftIndex(int i) {
-        return i * 2;
-    }
-
-
-    public int rightIndex(int i) {
         return i * 2 + 1;
     }
 
 
+    public int rightIndex(int i) {
+        return i * 2 + 2;
+    }
+
+
     public boolean hasLeftChild(int i) {
-        return leftIndex(i) <= size;
+        return leftIndex(i) < size;
     }
 
 
     public boolean hasRightChild(int i) {
-        return rightIndex(i) <= size;
+        return rightIndex(i) < size;
     }
 
 
 
     public int parentIndex(int i) {
 
-            return (int) Math.floor((i  / 2));
+        return (int) Math.floor(((i - 1) / 2));
        // return Integer.MIN_VALUE;
     }
 
