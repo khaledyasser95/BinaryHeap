@@ -11,11 +11,6 @@ public class Heappy   {
     Representation rep = new Representation();
     ArrayList<Integer> Tree= new ArrayList<Integer>() ;
     int test=0;
-   /* private int Index=1;
-    private int L[],R[],Tree[];
-    private int Left= L[2*Index];
-    private int Right = R[2*Index+1];
-    private int Parent= Index/2;*/
 
     public Heappy() {
         rep.setSize(0);
@@ -25,34 +20,63 @@ public class Heappy   {
 
     public static void main(String[] args) {
 
-        Heappy New = new Heappy();
-        /*Scanner scan = new Scanner(System.in);
-        New.insert(scan.nextInt());*/
-
-        try {
-            New.insert(90);
-            New.insert(89);
-            New.insert(70);
-            New.insert(70);
-            New.printHeap();
-
-            System.out.println("REMOVE"+New.remove());
-            New.printHeap();
-        }catch  (Exception e){
-            System.out.println(e.getMessage());
-            System.out.println("ERROR");
-        }
-
+        Heappy heap = new Heappy();
+        heap.create();
 
     }
     public void create(){
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Binary Heap Test\n\n");
+        System.out.println("Enter size of Binary heap");
+        /** Make object of BinaryHeap **/
+
+        char ch;
+        /**  Perform Binary Heap operations  **/
+        do {
+            System.out.println("\nBinary Heap Operations\n");
+            System.out.println("1. insert ");
+            System.out.println("2. delete min");
+            System.out.println("3. check empty");
+
+            int choice = scan.nextInt();
+            switch (choice) {
+                case 1:
+                    try {
+                        System.out.println("Enter integer element to insert");
+                        insert(scan.nextInt());
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
+                    break;
+                case 2:
+                    try {
+                        System.out.println("Min Element : " + remove());
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
+                    break;
+
+                case 3:
+                    System.out.println("Empty status = " + isEmpty());
+                    break;
+
+                default:
+                    System.out.println("Wrong Entry \n ");
+                    break;
+            }
+            /** Display heap **/
+            printHeap();
+
+            System.out.println("\nDo you want to continue (Type y or n) \n");
+            ch = scan.next().charAt(0);
+        } while (ch == 'Y' || ch == 'y');
 
 
     }
     public int remove() {
         // what do want return?
-        Tree.set(0,Tree.get(Tree.size()-1));
         int last = minChild();
+        Tree.set(0, Tree.get(Tree.size() - 1));
       //  System.out.println( "\n hey" +last_index);
         Tree.remove(Tree.get(Tree.size()-1));
         rep.Sizedec();
@@ -70,6 +94,10 @@ public class Heappy   {
         int index = rep.getSize()-1;
         Tree.add(index,value);
         bubbleUp();
+    }
+
+    public boolean isEmpty() {
+        return rep.getSize() < 0;
     }
     protected void bubbleDown() {
         int index = 0;
