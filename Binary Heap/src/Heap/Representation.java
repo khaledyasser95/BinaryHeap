@@ -26,7 +26,7 @@ public class Representation {
     ArrayList T= new ArrayList() ;
 
     public boolean hasParent(int i) {
-        return i > 0;
+        return i >= 0;
     }
 
 

@@ -5,23 +5,18 @@ package Heap;
  */
 
 import javax.swing.*;
-import java.awt.BorderLayout;
-import java.awt.Font;
-import java.awt.FontMetrics;
-import java.awt.Graphics;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import java.awt.*;
 
 public class GUI extends JFrame {
-    private JPanel contentPane;
     public Heappy tree;
     public Representation node;
     public DrawTree drawer;
     public int index;
+    private JPanel contentPane;
     private JButton button1;
     private JTextArea textArea1;
+    private JTextField textField1;
 
     /**
      * Create the frame.
@@ -45,7 +40,7 @@ public class GUI extends JFrame {
 
         public Heappy tree;
         public Representation rep;
-        int i = 0;
+        int i;
 
         public DrawTree(Heappy tree, Representation rep) {
             this.tree = tree;
@@ -63,10 +58,8 @@ public class GUI extends JFrame {
             g.setFont(new Font("Tahoma", Font.BOLD, 20));
             g.drawString(String.valueOf(tree.parent(i)), this.getWidth() / 2, 30);
             try {
-
                 DrawNode(g, 0, 100, 50, 2);
                 System.out.println("START new");
-                //   DrawTree(g, 0, getWidth(), 0, getHeight() / 5, tree.parent(i));
 
 
             } catch (Exception e) {
@@ -77,54 +70,26 @@ public class GUI extends JFrame {
         }
 
         public void DrawNode(Graphics g, int i, int w, int h, int q) {
-            try {
-                for (i = i; i < rep.getSize(); i++) {
-                    System.out.print(getdata(i) + " ");
-                    System.out.println("SIZE" + rep.getSize());
-                    g.setFont(new Font("Tahoma", Font.BOLD, 20));
-                    if (rep.parentIndex(i) <= tree.getTree().size()) {
-                        //g.drawString(String.valueOf(getdata(i)), (this.getWidth() / q) + w, h);
-                        if (rep.hasLeftChild(i)) {
-                            g.drawString(String.valueOf(getdata(rep.leftIndex(i))), (this.getWidth() / q) - w, h + 50);
-                            DrawNode(g, rep.leftIndex(i), -w, h * 2, q);
-                        }
-                        if (rep.hasRightChild(i)) {
+            int old = w;
+            while (i != rep.getSize()) {
 
-                            g.drawString(String.valueOf(getdata(rep.rightIndex(i))), (this.getWidth() / q) + w, h + 50);
-                            DrawNode(g, rep.rightIndex(i), w * 2, h * 2, q);
-                        }
+                System.out.print(getdata(i) + " ");
+                System.out.println("SIZE" + rep.getSize() + " i= " + i);
+                if (rep.hasParent(i)) {
+                    if (rep.hasLeftChild(i)) {
+                        g.drawString(String.valueOf(getdata(rep.leftIndex(i))), (this.getWidth() / q) - w, h + 50);
+                        System.out.print("LEFT" + tree.Left(i) + "\n");
+
+                    }
+                    if (rep.hasRightChild(i)) {
+                        g.drawString(String.valueOf(getdata(rep.rightIndex(i))), (this.getWidth() / q) + w, h + 50);
+                        System.out.print("Right " + tree.right(i) + "\n");
+
                     }
                 }
-            } catch (Exception e) {
-                System.out.println("NODE " + e.getMessage());
+
+                i++;
             }
-
-
         }
-
-
-        public void DrawTree(Graphics g, int StartWidth, int EndWidth, int StartHeight, int Level, int value) {
-            try {
-                for (value = value; value <= rep.getSize() - 1; value++) {
-                    String data = String.valueOf(getdata(value));
-                    g.setFont(new Font("Tahoma", Font.BOLD, 20));
-                    FontMetrics fm = g.getFontMetrics();
-                    int dataWidth = fm.stringWidth(data);
-                    g.drawString(data, (StartWidth + EndWidth) / 2 - dataWidth / 2, StartHeight + Level / 2);
-
-                    if (rep.hasLeftChild(value))
-                        DrawTree(g, StartWidth, (StartWidth + EndWidth) / 2, StartHeight + Level, Level, rep.leftIndex(i));
-                    if (rep.hasRightChild(value))
-                        DrawTree(g, (StartWidth + EndWidth) / 2, EndWidth, StartHeight + Level, Level, rep.rightIndex(i));
-
-                }
-            } catch (Exception e) {
-                System.out.println("TREE " + e.getMessage());
-            }
-
-
-        }
-
-
     }
 }

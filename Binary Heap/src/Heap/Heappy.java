@@ -13,7 +13,7 @@ public class Heappy   {
     Representation rep = new Representation();
     private ArrayList<Integer> Tree = new ArrayList<Integer>();
     int test=0;
-
+    int x;
 
     public ArrayList<Integer> getTree() {
         return Tree;
@@ -55,21 +55,21 @@ public class Heappy   {
             System.out.println("1. insert ");
             System.out.println("2. delete min");
             System.out.println("3. check empty");
-
+            System.out.println("4. GUI");
             int choice = scan.nextInt();
             switch (choice) {
                 case 1:
                     try {
-                        //System.out.println("Enter integer element to insert");
-                        // insert(scan.nextInt());
-                        insert(14);
-                        insert(100);
-                        insert(200);
-                        insert(30);
-                        insert(40);
-                        insert(60);
-                        // insert(300);
-                        GUI gui = new GUI(this, rep);
+                        System.out.println("Enter Size");
+                        int size = scan.nextInt();
+                        System.out.println("Enter integer element to insert");
+                        while (x != size) {
+                            insert(scan.nextInt());
+                            x++;
+                        }
+
+
+
                     } catch (Exception e) {
                         System.out.println(e.getMessage());
                     }
@@ -85,7 +85,9 @@ public class Heappy   {
                 case 3:
                     System.out.println("Empty status = " + isEmpty());
                     break;
-
+                case 4:
+                    GUI gui = new GUI(this, rep);
+                    break;
                 default:
                     System.out.println("Wrong Entry \n ");
                     break;
