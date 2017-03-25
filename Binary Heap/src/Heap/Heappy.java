@@ -12,8 +12,8 @@ import java.util.Scanner;
 public class Heappy   {
 
     Representation rep = new Representation();
-    String sorttext = new String();
-
+    public String sorttext = new String();
+    public String swappy = new String();
 
     private ArrayList<Integer> Tree = new ArrayList<Integer>();
 
@@ -38,6 +38,7 @@ public class Heappy   {
         merge.ini();
         merge.merge_sort(0, rep.getSize() - 1);
         sorttext = merge.printmerge(rep.getSize());
+        swappy = "Tree is sorted ";
     }
 
     public static void main(String[] args) {
@@ -48,12 +49,7 @@ public class Heappy   {
 
     }
 
-    public int getheight(int i) {
 
-        if (i == -1)
-            return 0;
-        return Math.max(getheight(Tree.get(rep.leftIndex(i))), getheight(Tree.get(rep.rightIndex(i)))) + 1;
-    }
     public void create(){
         Scanner scan = new Scanner(System.in);
         System.out.println("Binary Heap Test\n\n");
@@ -116,13 +112,25 @@ public class Heappy   {
     }
     public int remove() {
         // what do want return?
-        int last = minChild();
-        Tree.set(0, Tree.get(Tree.size() - 1));
-      //  System.out.println( "\n hey" +last_index);
-        Tree.remove(Tree.get(Tree.size()-1));
-        rep.Sizedec();
-        bubbleDown();
-        return last;
+
+        try {
+            int last = minChild();
+
+            Tree.set(0, Tree.get(Tree.size() - 1));
+            Tree.remove(Tree.get(Tree.size() - 1));
+            rep.Sizedec();
+            System.out.println(rep.getSize());
+            bubbleDown();
+            return last;
+
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+
+
+        }
+        return -1;
+
     }
     private int minChild()
     {
@@ -135,6 +143,7 @@ public class Heappy   {
         rep.Sizeinc();
         int index = rep.getSize()-1;
         Tree.add(index,value);
+        swappy = value + " is added ";
         bubbleUp();
 
     }
@@ -175,6 +184,7 @@ public class Heappy   {
         while ((parent(index) < Tree.get(index))) {
 
             swap(index, rep.parentIndex(index));
+            swappy = "Swapped " + Tree.get(index) + " with" + Tree.get(rep.parentIndex(index));
             index = rep.parentIndex(index);
         }
 

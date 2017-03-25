@@ -54,10 +54,7 @@ public class Representation {
 
 
     public int parentIndex(int i) {
-        //didn't handle zero case ?
         return (int) Math.floor(((i - 1) / 2));
-
-        //return Integer.MIN_VALUE;
     }
 
 

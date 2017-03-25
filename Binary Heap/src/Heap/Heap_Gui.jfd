@@ -4,8 +4,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq {space :::p, par l {comp scrollPane1::l::411:x, comp sort::l::411:x, comp button1::t::411:x, seq t {space :p:6:p, comp label1::::99:x, space u:::p, comp textField2:::p:294:p}, seq t {comp label2::::109:x, space u:::p, comp textField1:::p:290:p}, comp button3::l::411:x, seq l {comp Quicksort:::p:98:p, space u:::p, comp MergeSort:::p:93:p, space :::p, comp sorttex::::202:x}}, space :::p}}"
-			"$verticalGroup": "par l {seq l {space :::p, comp scrollPane1:::p:31:p, space :::p, comp button1:::p::p, space :p:7:p, par b {comp textField2::b:p::p, comp label1::b:p::p}, space :::p, comp sort:::p::p, space u:::p, par b {comp Quicksort::b:p::p, comp MergeSort::b:p::p, comp sorttex::b:p::p}, space :::x, comp button3:::p::p, space :::p, par b {comp textField1::b:p::p, comp label2::b:p::p}, space :::p}}"
+			"$horizontalGroup": "par l {seq {space :::p, par l {comp scrollPane1::l::411:x, comp button1::t::411:x, comp button3::l::411:x, seq t {comp label2::::109:x, space u:::p, par l:::p {comp Swap::::290:x, comp textField1::::290:x}}, seq t {par t {comp sort::::111:x, seq t {space :p:6:p, comp label1::::105:x}}, space :::p, par l {comp textField2:::p:294:p, seq l {comp MergeSort:::p:93:p, space :::p, comp Quicksort:::p:98:p}}}, seq {space :6:6:p, comp sorttex::::405:x}}, space :::p}}"
+			"$verticalGroup": "par l {seq l {space :::p, comp scrollPane1:::p:31:p, space :::p, comp button1:::p::p, space :p:7:p, par b {comp textField2::b:p::p, comp label1::b:p::p}, space :::p, par b {comp sort::b:p::p, comp MergeSort::b:p::p, comp Quicksort::b:p::p}, space u:::p, comp sorttex:::p::p, space u:::p, comp button3:::p::p, space ::17:x, comp Swap:::p::p, space :::p, par b {comp textField1::b:p::p, comp label2::b:p::p}, space :::p}}"
 		} ) {
 			name: "this"
 			"title": "BINARY HEAP"
@@ -23,6 +23,8 @@ new FormModel {
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "textField1"
+				"editable": false
+				"background": new java.awt.Color( 255, 255, 255, 255 )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "button1"
@@ -31,7 +33,7 @@ new FormModel {
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "sort"
-				"text": "Heap Sort"
+				"text": "Sort"
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "sortActionPerformed", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
@@ -41,6 +43,8 @@ new FormModel {
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "textField2"
+				"editable": false
+				"background": new java.awt.Color( 255, 255, 255, 255 )
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label1"
@@ -63,10 +67,16 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "sorttex"
 				"horizontalAlignment": 0
+				"editable": false
+				"background": new java.awt.Color( 255, 255, 255, 255 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "Swap"
+				"text": "Action Made"
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 425, 315 )
+			"size": new java.awt.Dimension( 425, 325 )
 		} )
 	}
 }

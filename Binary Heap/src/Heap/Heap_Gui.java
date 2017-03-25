@@ -51,6 +51,8 @@ public class Heap_Gui extends JFrame {
                 OP.add(type);
                 heap.insert(Integer.parseInt(type));
                 textArea1.setText("");
+                scan();
+                print();
             }
         } catch (Exception x) {
             System.out.println(x.getMessage());
@@ -58,10 +60,20 @@ public class Heap_Gui extends JFrame {
     }
 
     private void button3ActionPerformed(ActionEvent e) {
+        int index = heap.rep.getSize() - 1;
 
-        heap.remove();
-        scan();
-        // heap.bubbleUp();
+        if (index >= 0) {
+            heap.remove();
+            scan();
+
+        } else {
+            textField1.setText("  Empty");
+            Swap.setText("Empty Array");
+        }
+
+        index--;
+
+
     }
 
     private void scan() {
@@ -70,13 +82,11 @@ public class Heap_Gui extends JFrame {
         while (i != heap.rep.getSize()) {
             int output = heap.getTree().get(i);
             value.append(output + "  ");
-            if (value.toString() != null)
-                textField1.setText("  " + value.toString() + "  ");
-            else textField1.setText("Empty");
-
-
+            Swap.setText(heap.swappy);
+            textField1.setText("  " + value.toString() + "  ");
             i++;
         }
+
     }
 
     private void print() {
@@ -97,7 +107,9 @@ public class Heap_Gui extends JFrame {
         } else if (MergeSort.isSelected()) {
             heap.merge();
             sorttex.setText("  " + heap.sorttext + "  ");
+
         }
+        Swap.setText(heap.swappy);
     }
 
     private void initComponents() {
@@ -115,6 +127,7 @@ public class Heap_Gui extends JFrame {
         Quicksort = new JRadioButton();
         MergeSort = new JRadioButton();
         sorttex = new JTextField();
+        Swap = new JLabel();
 
         //======== this ========
         setTitle("BINARY HEAP");
@@ -144,17 +157,25 @@ public class Heap_Gui extends JFrame {
             scrollPane1.setViewportView(textArea1);
         }
 
+        //---- textField1 ----
+        textField1.setEditable(false);
+        textField1.setBackground(Color.white);
+
         //---- button1 ----
         button1.setText("Preview");
         button1.addActionListener(e -> button1ActionPerformed(e));
 
         //---- sort ----
-        sort.setText("Heap Sort");
+        sort.setText("Sort");
         sort.addActionListener(e -> sortActionPerformed(e));
 
         //---- button3 ----
         button3.setText("Delete Minimum");
         button3.addActionListener(e -> button3ActionPerformed(e));
+
+        //---- textField2 ----
+        textField2.setEditable(false);
+        textField2.setBackground(Color.white);
 
         //---- label1 ----
         label1.setText("INPUT");
@@ -172,6 +193,11 @@ public class Heap_Gui extends JFrame {
 
         //---- sorttex ----
         sorttex.setHorizontalAlignment(SwingConstants.CENTER);
+        sorttex.setEditable(false);
+        sorttex.setBackground(Color.white);
+
+        //---- Swap ----
+        Swap.setText("Action Made");
 
         GroupLayout contentPaneLayout = new GroupLayout(contentPane);
         contentPane.setLayout(contentPaneLayout);
@@ -181,24 +207,30 @@ public class Heap_Gui extends JFrame {
                                 .addContainerGap()
                                 .addGroup(contentPaneLayout.createParallelGroup()
                                         .addComponent(scrollPane1, GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE)
-                                        .addComponent(sort, GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE)
                                         .addComponent(button1, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE)
-                                        .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
-                                                .addGap(6, 6, 6)
-                                                .addComponent(label1, GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
-                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(textField2, GroupLayout.PREFERRED_SIZE, 294, GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(button3, GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE)
                                         .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
                                                 .addComponent(label2, GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
                                                 .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(textField1, GroupLayout.PREFERRED_SIZE, 290, GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(button3, GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE)
-                                        .addGroup(contentPaneLayout.createSequentialGroup()
-                                                .addComponent(Quicksort, GroupLayout.PREFERRED_SIZE, 98, GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(MergeSort, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
+                                                .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                                        .addComponent(Swap, GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                                                        .addComponent(textField1, GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)))
+                                        .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
+                                                .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                                        .addComponent(sort, GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                                                        .addGroup(contentPaneLayout.createSequentialGroup()
+                                                                .addGap(6, 6, 6)
+                                                                .addComponent(label1, GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)))
                                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(sorttex, GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)))
+                                                .addGroup(contentPaneLayout.createParallelGroup()
+                                                        .addComponent(textField2, GroupLayout.PREFERRED_SIZE, 294, GroupLayout.PREFERRED_SIZE)
+                                                        .addGroup(contentPaneLayout.createSequentialGroup()
+                                                                .addComponent(MergeSort, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(Quicksort, GroupLayout.PREFERRED_SIZE, 98, GroupLayout.PREFERRED_SIZE))))
+                                        .addGroup(contentPaneLayout.createSequentialGroup()
+                                                .addGap(6, 6, 6)
+                                                .addComponent(sorttex, GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)))
                                 .addContainerGap())
         );
         contentPaneLayout.setVerticalGroup(
@@ -213,14 +245,16 @@ public class Heap_Gui extends JFrame {
                                         .addComponent(textField2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(label1))
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(sort)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(Quicksort)
+                                        .addComponent(sort)
                                         .addComponent(MergeSort)
-                                        .addComponent(sorttex, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(Quicksort))
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(sorttex, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(button3)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                                .addComponent(Swap)
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                         .addComponent(textField1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
@@ -248,5 +282,6 @@ public class Heap_Gui extends JFrame {
     private JRadioButton Quicksort;
     private JRadioButton MergeSort;
     private JTextField sorttex;
+    private JLabel Swap;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }
