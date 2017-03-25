@@ -34,6 +34,7 @@ public class Heappy   {
         Heappy heap = new Heappy();
         heap.create();
 
+
     }
 
     public int getheight(int i) {
@@ -86,7 +87,8 @@ public class Heappy   {
                     System.out.println("Empty status = " + isEmpty());
                     break;
                 case 4:
-                    GUI gui = new GUI(this, rep);
+                    Heap_Gui gui = new Heap_Gui();
+                    gui.setVisible(true);
                     break;
                 default:
                     System.out.println("Wrong Entry \n ");

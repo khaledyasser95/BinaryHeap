@@ -1,0 +1,55 @@
+JFDML JFormDesigner: "6.0.0.0.84" Java: "1.8.0_121" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq {space :::p, par l {comp scrollPane1::l::386:x, comp button3::t::386:x, comp button2::l::386:x, comp button1::t::386:x, seq t {comp label2::::84:x, space u:::p, comp textField1:::p:290:p}, seq t {space :p:6:p, comp label1::::74:x, space u:::p, comp textField2:::p:294:p}}, space :::p}}"
+			"$verticalGroup": "par l {seq l {space :::p, comp scrollPane1:::p:31:p, space :::p, comp button1:::p::p, space :p:7:p, par b {comp textField2::b:p::p, comp label1::b:p::p}, space :::p, comp button2:::p::p, space :::p, comp button3:::p::p, space :::p, par l {comp textField1:::p::p, comp label2:::p::p}, space :::x}}"
+		} ) {
+			name: "this"
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				add( new FormComponent( "javax.swing.JTextArea" ) {
+					name: "textArea1"
+					addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "textArea1KeyTyped", true ) )
+					addEvent( new FormEvent( "java.awt.event.KeyListener", "keyPressed", "textArea1KeyPressed", true ) )
+					addEvent( new FormEvent( "java.awt.event.KeyListener", "keyReleased", "textArea1KeyReleased", true ) )
+				} )
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textField1"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button1"
+				"text": "Preview"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button2"
+				"text": "Heap Sort"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button3"
+				"text": "Delete Minimum"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button3ActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textField2"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "INPUT"
+				"horizontalAlignment": 0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": "OUTPUT"
+				"horizontalAlignment": 0
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 400, 245 )
+		} )
+	}
+}
