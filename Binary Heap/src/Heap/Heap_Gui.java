@@ -57,6 +57,7 @@ public class Heap_Gui extends JFrame {
 
         heap.remove();
         scan();
+        // heap.bubbleUp();
     }
 
     private void scan() {

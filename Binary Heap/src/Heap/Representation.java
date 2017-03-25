@@ -28,7 +28,7 @@ public class Representation {
     ArrayList T= new ArrayList() ;
 
     public boolean hasParent(int i) {
-        return i >= 0;
+        return i > 0;
     }
 
 
@@ -56,7 +56,8 @@ public class Representation {
     public int parentIndex(int i) {
         //didn't handle zero case ?
         return (int) Math.floor(((i - 1) / 2));
-       // return Integer.MIN_VALUE;
+
+        //return Integer.MIN_VALUE;
     }
 
 

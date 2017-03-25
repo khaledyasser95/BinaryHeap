@@ -19,9 +19,6 @@ public class Heappy   {
         return Tree;
     }
 
-    public void setTree(ArrayList<Integer> tree) {
-        Tree = tree;
-    }
 
     public Heappy() {
         rep.setSize(0);
@@ -161,13 +158,12 @@ public class Heappy   {
         // When adding value to last node we must bubble up to rearrange
         int index = rep.getSize()-1;
 
-        while (rep.hasParent(index) && (parent(index) < Tree.get(index)) ) {
-            // parent/child are out of order; swap them
-            //System.out.print(" hi "+parent(index)+"");
+        while ((parent(index) < Tree.get(index))) {
+
             swap(index, rep.parentIndex(index));
             index = rep.parentIndex(index);
         }
-        // System.out.print(" l "+parent(index)+"");
+
 
     }
     public int parent(int i) {
@@ -175,15 +171,6 @@ public class Heappy   {
         return Tree.get(rep.parentIndex(i));
     }
 
-    public int Left(int i) {
-        //Get Parent of the node am standing On
-        return Tree.get(rep.leftIndex(i));
-    }
-
-    public int right(int i) {
-        //Get Parent of the node am standing On
-        return Tree.get(rep.rightIndex(i));
-    }
     public void swap(int index1, int index2) {
         int tmp = Tree.get(index1);
         Tree.set(index1,Tree.get(index2));
