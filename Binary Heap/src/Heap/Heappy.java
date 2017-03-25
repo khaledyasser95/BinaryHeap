@@ -2,6 +2,7 @@ package Heap;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -11,7 +12,11 @@ import java.util.Scanner;
 public class Heappy   {
 
     Representation rep = new Representation();
+    String sorttext = new String();
+
+
     private ArrayList<Integer> Tree = new ArrayList<Integer>();
+
     int test=0;
     int x;
 
@@ -19,12 +24,21 @@ public class Heappy   {
         return Tree;
     }
 
+    public void setTree(ArrayList<Integer> tree) {
+        Tree = tree;
+    }
 
     public Heappy() {
         rep.setSize(0);
         Tree.clear();
     }
 
+    void merge() {
+        MergeSort merge = new MergeSort(this, Tree);
+        merge.ini();
+        merge.merge_sort(0, rep.getSize() - 1);
+        sorttext = merge.printmerge(rep.getSize());
+    }
 
     public static void main(String[] args) {
 

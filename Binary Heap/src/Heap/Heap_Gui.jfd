@@ -4,10 +4,14 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq {space :::p, par l {comp scrollPane1::l::386:x, comp button3::t::386:x, comp button2::l::386:x, comp button1::t::386:x, seq t {comp label2::::84:x, space u:::p, comp textField1:::p:290:p}, seq t {space :p:6:p, comp label1::::74:x, space u:::p, comp textField2:::p:294:p}}, space :::p}}"
-			"$verticalGroup": "par l {seq l {space :::p, comp scrollPane1:::p:31:p, space :::p, comp button1:::p::p, space :p:7:p, par b {comp textField2::b:p::p, comp label1::b:p::p}, space :::p, comp button2:::p::p, space :::p, comp button3:::p::p, space :::p, par l {comp textField1:::p::p, comp label2:::p::p}, space :::x}}"
+			"$horizontalGroup": "par l {seq {space :::p, par l {comp scrollPane1::l::411:x, comp sort::l::411:x, comp button1::t::411:x, seq t {space :p:6:p, comp label1::::99:x, space u:::p, comp textField2:::p:294:p}, seq t {comp label2::::109:x, space u:::p, comp textField1:::p:290:p}, comp button3::l::411:x, seq l {comp Quicksort:::p:98:p, space u:::p, comp MergeSort:::p:93:p, space :::p, comp sorttex::::202:x}}, space :::p}}"
+			"$verticalGroup": "par l {seq l {space :::p, comp scrollPane1:::p:31:p, space :::p, comp button1:::p::p, space :p:7:p, par b {comp textField2::b:p::p, comp label1::b:p::p}, space :::p, comp sort:::p::p, space u:::p, par b {comp Quicksort::b:p::p, comp MergeSort::b:p::p, comp sorttex::b:p::p}, space :::x, comp button3:::p::p, space :::p, par b {comp textField1::b:p::p, comp label2::b:p::p}, space :::p}}"
 		} ) {
 			name: "this"
+			"title": "BINARY HEAP"
+			"iconImage": sfield com.jformdesigner.model.FormObject NULL_VALUE
+			"type": enum java.awt.Window$Type POPUP
+			"background": new java.awt.Color( 0, 102, 102, 255 )
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "scrollPane1"
 				add( new FormComponent( "javax.swing.JTextArea" ) {
@@ -26,8 +30,9 @@ new FormModel {
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "button2"
+				name: "sort"
 				"text": "Heap Sort"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "sortActionPerformed", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "button3"
@@ -47,9 +52,21 @@ new FormModel {
 				"text": "OUTPUT"
 				"horizontalAlignment": 0
 			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "Quicksort"
+				"text": "Quick Sort"
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "MergeSort"
+				"text": "Merge Sort"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "sorttex"
+				"horizontalAlignment": 0
+			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 400, 245 )
+			"size": new java.awt.Dimension( 425, 315 )
 		} )
 	}
 }
