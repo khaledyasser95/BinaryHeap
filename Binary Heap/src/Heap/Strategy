@@ -1,0 +1,15 @@
+Required:
+
+1-The MAX-HEAPIFY procedure: is the key to maintaining the max-heap property and runs in O (lg n) time.
+
+parameter:an element index in an array and the array ?
+output: the element shifted in its place in the array to make it a maximum heap? (without affecting the original heap
+
+2-The BUILD-MAX-HEAP procedure produces a max-heap from an unordered input array and runs in O(n)
+
+parameter: an array of unordered integers (or values)
+o/p: it should make a maximum heap out of it (an array ordered as a maximum heap)
+
+3-The HEAPSORT procedure: sorts an array in place and which runs in O (n lg n) time
+
+
