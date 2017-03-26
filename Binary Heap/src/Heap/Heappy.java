@@ -11,6 +11,7 @@ import java.util.Scanner;
 public class Heappy   {
 
     Representation rep = new Representation();
+    //why Integer not int what is the difference?
     private ArrayList<Integer> Tree = new ArrayList<Integer>();
     int test=0;
     int x;

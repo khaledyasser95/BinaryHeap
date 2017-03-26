@@ -54,7 +54,7 @@ public class Representation {
 
 
     public int parentIndex(int i) {
-        //didn't handle zero case ?
+        //didn't handle zero case ? no we can use it if we checked before that it had a parent
         return (int) Math.floor(((i - 1) / 2));
        // return Integer.MIN_VALUE;
     }
