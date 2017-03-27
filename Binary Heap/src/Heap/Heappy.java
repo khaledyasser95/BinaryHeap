@@ -18,7 +18,7 @@ public class Heappy   {
     private ArrayList<Integer> Tree = new ArrayList<Integer>();
 
     int test=0;
-    int x;
+    int x=0;
 
     public ArrayList<Integer> getTree() {
         return Tree;
@@ -53,7 +53,8 @@ public class Heappy   {
     public void create(){
         Scanner scan = new Scanner(System.in);
         System.out.println("Binary Heap Test\n\n");
-        System.out.println("Enter size of Binary heap");
+        //System.out.println("Enter size of Binary heap");
+        //we didn' take the size? then why print it
         /** Make object of BinaryHeap **/
 
         char ch;
@@ -64,13 +65,18 @@ public class Heappy   {
             System.out.println("2. delete min");
             System.out.println("3. check empty");
             System.out.println("4. GUI");
+            System.out.println("5. heap sort");
             int choice = scan.nextInt();
             switch (choice) {
                 case 1:
+
                     try {
+                        //size of insertion
                         System.out.println("Enter Size");
                         int size = scan.nextInt();
                         System.out.println("Enter integer element to insert");
+
+
                         while (x != size) {
                             insert(scan.nextInt());
                             x++;
@@ -97,6 +103,9 @@ public class Heappy   {
                     Heap_Gui gui = new Heap_Gui();
                     gui.setVisible(true);
                     break;
+                case 5:
+                    heapSort();
+                    break;
                 default:
                     System.out.println("Wrong Entry \n ");
                     break;
@@ -115,9 +124,9 @@ public class Heappy   {
 
         try {
             int last = minChild();
-
-            Tree.set(0, Tree.get(Tree.size() - 1));
-            Tree.remove(Tree.get(Tree.size() - 1));
+            int lastArrayElement=Tree.get(Tree.size() - 1);
+            Tree.set(0, lastArrayElement);
+            Tree.remove(lastArrayElement);
             rep.Sizedec();
             System.out.println(rep.getSize());
             bubbleDown();
@@ -127,8 +136,8 @@ public class Heappy   {
         } catch (Exception e) {
             System.out.println(e.getMessage());
 
-
         }
+
         return -1;
 
     }
@@ -206,6 +215,40 @@ public class Heappy   {
         for (int i = 0; i < rep.getSize(); i++)
             System.out.print(Tree.get(i) +" ");
         System.out.println();
+    }
+
+    //one pass of heap sort: puts max element into its place
+    void heapSortMax()
+    {
+        for(int i=0;i<Tree.size()-1;i++)
+        {
+            try {
+
+                int lastArrayElementIndex=Tree.size() - 1-i;
+                swap(0,lastArrayElementIndex);
+                rep.Sizedec();
+                bubbleDown();
+
+
+
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+
+            }
+        }
+        for(int i=0;i<Tree.size()-1;i++)
+        {
+            rep.Sizeinc();
+        }
+
+
+    }
+    void heapSort()
+    {
+        //ArrayList<Integer> sortedTree=new ArrayList<Integer>();
+        heapSortMax();
+        System.out.print("\nafter heapSort = ");
+
     }
 }
 
