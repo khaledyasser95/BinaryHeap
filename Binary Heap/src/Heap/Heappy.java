@@ -66,6 +66,7 @@ public class Heappy   {
             System.out.println("3. check empty");
             System.out.println("4. GUI");
             System.out.println("5. heap sort");
+            System.out.println("6. selection sort");
             int choice = scan.nextInt();
             switch (choice) {
                 case 1:
@@ -105,6 +106,9 @@ public class Heappy   {
                     break;
                 case 5:
                     heapSort();
+                    break;
+                case 6:
+                    selectionSort();
                     break;
                 default:
                     System.out.println("Wrong Entry \n ");
@@ -245,11 +249,38 @@ public class Heappy   {
     }
     void heapSort()
     {
-        //ArrayList<Integer> sortedTree=new ArrayList<Integer>();
+
         heapSortMax();
         System.out.print("\nafter heapSort = ");
 
     }
+
+    void selectionSort()
+    {
+        int listSize=Tree.size();
+        int min;
+
+        //each pass of this loop swaps the J th element with the min element in the array
+        for(int j=0;j<listSize;j++)
+        {
+            min=j;
+            //output of this loos is min=index of min element in the array
+            for(int i=j+1;i<listSize;i++)
+            {
+                if(Tree.get(min)>Tree.get(i))
+                {
+                    min=i;
+                }
+            }
+            swap(j,min);
+
+        }
+
+
+        System.out.print("\nafter selectionSort = ");
+
+    }
+
 }
 
 
