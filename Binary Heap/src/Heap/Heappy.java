@@ -10,7 +10,8 @@ import java.util.Scanner;
  */
 
 public class Heappy   {
-
+    Timer time = new Timer();
+    Compare com = new Compare();
     Representation rep = new Representation();
     public String sorttext = new String();
     public String swappy = new String();
@@ -224,6 +225,7 @@ public class Heappy   {
     //one pass of heap sort: puts max element into its place
     void heapSortMax()
     {
+        time.start();
         for(int i=0;i<Tree.size()-1;i++)
         {
             try {
@@ -245,9 +247,12 @@ public class Heappy   {
             rep.Sizeinc();
         }
 
-
+        time.end();
+        System.out.println(time.execution + "Nano Sec");
+        com.setHeapSort(time.execution);
     }
-    void heapSort()
+
+    public void heapSort()
     {
 
         heapSortMax();
@@ -255,8 +260,9 @@ public class Heappy   {
 
     }
 
-    void selectionSort()
+    public void selectionSort()
     {
+        time.start();
         int listSize=Tree.size();
         int min;
 
@@ -278,7 +284,9 @@ public class Heappy   {
 
 
         System.out.print("\nafter selectionSort = ");
-
+        time.end();
+        System.out.println(time.execution + "Nano Sec");
+        com.setSelection(time.execution);
     }
 
 }
