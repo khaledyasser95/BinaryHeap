@@ -35,11 +35,15 @@ public class Heappy   {
     }
 
     void merge() {
+        time.start();
         MergeSort merge = new MergeSort(this, Tree);
         merge.ini();
         merge.merge_sort(0, rep.getSize() - 1);
         sorttext = merge.printmerge(rep.getSize());
         swappy = "Tree is sorted ";
+        time.end();
+        System.out.println(time.execution + "Nano Sec");
+        com.setMergeSort(time.execution);
     }
 
     public static void main(String[] args) {
@@ -129,9 +133,7 @@ public class Heappy   {
 
         try {
             int last = minChild();
-            int lastArrayElement=Tree.get(Tree.size() - 1);
-            Tree.set(0, lastArrayElement);
-            Tree.remove(lastArrayElement);
+            Tree.remove(0);
             rep.Sizedec();
             System.out.println(rep.getSize());
             bubbleDown();
@@ -139,7 +141,7 @@ public class Heappy   {
 
 
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println("Remove Error: " + e.getMessage());
 
         }
 
@@ -248,7 +250,7 @@ public class Heappy   {
         }
 
         time.end();
-        System.out.println(time.execution + "Nano Sec");
+        System.out.println("Heap Sort took" + time.execution + "Nano Sec");
         com.setHeapSort(time.execution);
     }
 
@@ -256,7 +258,6 @@ public class Heappy   {
     {
 
         heapSortMax();
-        System.out.print("\nafter heapSort = ");
 
     }
 
@@ -283,9 +284,8 @@ public class Heappy   {
         }
 
 
-        System.out.print("\nafter selectionSort = ");
         time.end();
-        System.out.println(time.execution + "Nano Sec");
+        System.out.println("selectionSort took " + time.execution + " Nano Sec");
         com.setSelection(time.execution);
     }
 

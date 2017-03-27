@@ -5,6 +5,23 @@ package Heap;
  */
 public class Compare {
     private long Quicksort;
+
+    public long getQuicksort() {
+        return Quicksort;
+    }
+
+    public long getMergeSort() {
+        return mergeSort;
+    }
+
+    public long getSelection() {
+        return selection;
+    }
+
+    public long getHeapSort() {
+        return heapSort;
+    }
+
     private long mergeSort;
     private long selection;
     private long heapSort;

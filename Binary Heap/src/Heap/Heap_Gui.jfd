@@ -4,8 +4,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq {space :::p, par l {comp scrollPane1::l::411:x, comp button1::t::411:x, comp button3::l::411:x, seq t {comp label2::::109:x, space u:::p, par l:::p {comp Swap::::290:x, comp textField1::::290:x}}, seq t {par t {comp sort::::111:x, seq t {space :p:6:p, comp label1::::105:x}}, space :::p, par l {comp textField2:::p:294:p, seq l {comp MergeSort:::p:93:p, space :::p, comp Quicksort:::p:98:p}}}, seq {space :6:6:p, comp sorttex::::405:x}}, space :::p}}"
-			"$verticalGroup": "par l {seq l {space :::p, comp scrollPane1:::p:31:p, space :::p, comp button1:::p::p, space :p:7:p, par b {comp textField2::b:p::p, comp label1::b:p::p}, space :::p, par b {comp sort::b:p::p, comp MergeSort::b:p::p, comp Quicksort::b:p::p}, space u:::p, comp sorttex:::p::p, space u:::p, comp button3:::p::p, space ::17:x, comp Swap:::p::p, space :::p, par b {comp textField1::b:p::p, comp label2::b:p::p}, space :::p}}"
+			"$horizontalGroup": "par l {seq {space :::p, par l {seq l {par t:::p {comp label1::::93:x, comp MergeSort::::93:x}, space :::p, par l {seq {comp Quicksort:::p:86:p, space :::p, comp selection:::p::p, space u:::p, comp heapsort:::p::p}, seq {space :29:29:p, comp textField2:::p:224:p}}}, seq l {par t:::p {comp label2:::::x, comp button3:::::x}, space :::p, par l:::p {comp sorttex::::229:x, comp textField1::::229:x}}, par t:l {seq {comp sort:::p:63:p, space :::p, comp button1:::p:90:p, space :p:5:p, comp scrollPane1:::p:202:p}, comp table1:::p:367:p}, comp Swap::l:p:369:p}, space :p:3:p}}"
+			"$verticalGroup": "par l {seq l {space :::p, comp table1:::p::p, space :::p, par b {comp button1::b:p::p, comp sort::b:p::p, comp scrollPane1::l:::x}, space :::p, par b {comp label1::b:p::p, comp textField2::b:p::p}, space :::p, par b {comp MergeSort::b:p::p, comp Quicksort::b:p::p, comp selection::b:p::p, comp heapsort::b:p::p}, space :::p, par b {comp button3::b:p::p, comp sorttex::b:p::p}, space :::p, par b {comp label2::b:p::p, comp textField1::b:p:15:p}, space :::p, comp Swap:::p::p, space :p:3:p}}"
 		} ) {
 			name: "this"
 			"title": "BINARY HEAP"
@@ -30,11 +30,6 @@ new FormModel {
 				name: "button1"
 				"text": "Preview"
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
-			} )
-			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "sort"
-				"text": "Sort"
-				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "sortActionPerformed", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "button3"
@@ -74,9 +69,115 @@ new FormModel {
 				name: "Swap"
 				"text": "Action Made"
 			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "selection"
+				"text": "Selection"
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "heapsort"
+				"text": "HeapSort"
+			} )
+			add( new FormComponent( "javax.swing.JTable" ) {
+				name: "table1"
+				"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
+					add( new java.util.Vector {
+						add( "QuickSort" )
+						add( "MergeSort" )
+						add( "Selection" )
+						add( "HeapSort" )
+					} )
+					add( new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					} )
+					add( new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					} )
+					add( new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					} )
+					add( new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					} )
+					add( new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					} )
+					add( new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					} )
+					add( new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					} )
+					add( new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					} )
+					add( new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					} )
+				}, new java.util.Vector {
+					add( null )
+					add( null )
+					add( null )
+					add( null )
+				}, new java.util.Vector {
+					add( null )
+					add( null )
+					add( null )
+					add( null )
+				}, new java.util.Vector {
+					add( false )
+					add( null )
+					add( null )
+					add( null )
+				}, new java.util.Vector {
+					add( new com.jformdesigner.model.SwingTableColumn( null, 0, 0, 0, false ) )
+					add( null )
+					add( null )
+					add( null )
+				} )
+				"cellSelectionEnabled": true
+				"autoCreateRowSorter": true
+				"autoResizeMode": 0
+				"background": sfield java.awt.SystemColor controlHighlight
+				"font": new com.jformdesigner.model.SwingDerivedFont( "Arial", 0, 0, false )
+				"opaque": false
+				"foreground": sfield java.awt.Color black
+				"border": new com.jformdesigner.model.SwingBorder( "Table.focusCellHighlightBorder" )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "sort"
+				"text": "Sort"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "sortActionPerformed", true ) )
+			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 425, 325 )
+			"location": new java.awt.Point( 20, 10 )
+			"size": new java.awt.Dimension( 380, 385 )
 		} )
 	}
 }
