@@ -1,9 +1,9 @@
 package Heap;
+
 /* choosing pivot
 1-can choose multiple elements and take their median
 2-can choose element randomly
 3-can choose last element of array
-
 */
 
 //import java.util.Scanner;
@@ -20,7 +20,7 @@ public class QuickSort {
 
         System.out.println("before sorting:");
         printArray(list,list.length);
-        quickSort(list,list.length);
+        quickSort(list,0,list.length-1);
         System.out.println("after sorting:");
         printArray(list,list.length);
 
@@ -63,42 +63,56 @@ public class QuickSort {
     }
 
     */
-    //how to make it generic? currently just assming array is array of ints
+    //how to make it generic? currently just assuming array is array of ints
     static int lastElementPivot(int list[], int n)
     {
         int pivot=list[n-1];
         return pivot;
     }
 
-    static void  quickSort(int list[], int n)
+    static void  quickSort(int list[], int first,int last)
     {
+       /* if(n==0)
+        {
+            System.out.print("zero");
+        }*/
         //if any other method used for generating pivot it should be swapped with last element in array after choosing it
         //for algorithm to work
         //if(n==1) return ;
+        int n=last-first+1;
         int pivot= lastElementPivot(list,n);
         int front=0;
-        int end=n-1;
+        //because pivot is in n-1
+        int end=n-2;
         int switched;
+        if(end<0)
+        {
+            return;
+        }
+        if(n==2)
+        {
+            if(list[0]<list[1])
+            {
+                swap(list,0,1);
+                return;
+            }
+            else
+            {
+                return;
+            }
 
+        }
         while(front<end)
         {
             //if front index <= pivot we will swap it to be on it right side
             if(list[front]<=pivot)
             {
                 //if end index is larger than pivot we will swap it to be on the left side
-                if(list[end]>pivot)
-                {
-                    swap(list,front,end);
-                    front++;
-                    end--;
 
-                }
-                else
-                {
                     switched=0;
                     while(end>front && switched==0)
                     {
-                        end--;
+
                         if(list[end]>pivot)
                         {
                             swap(list,front,end);
@@ -106,11 +120,15 @@ public class QuickSort {
                             end--;
                             switched=1;
                         }
+                        else
+                        {
+                            end--;
+                        }
 
 
                     }
 
-                }
+
 
             }
             else if(list[front]>pivot)
@@ -126,8 +144,12 @@ public class QuickSort {
 
         if(n!=1)
         {
-            quickSort(list,pivotIndex+1);
-            quickSort(list,n-pivotIndex+1);
+            System.out.println(pivotIndex);
+            System.out.println(n-pivotIndex+1);
+
+            quickSort(list,0,pivotIndex);
+            quickSort(list,pivotIndex,n-pivotIndex);
+
         }
 
 
@@ -154,6 +176,7 @@ public class QuickSort {
         //puts pivot in its right place and returns its index
         static int insertPivot(int list[],int n,int front)
         {
+            //front will be now pointing at last element in the left array or 1st in right array
             if(list[front]>=list[n-1])
             {
                 swap(list,n-1,front+1);
@@ -162,7 +185,7 @@ public class QuickSort {
 
             else
             {
-                swap(list,n-1,front);
+                swap(list,n-1, front);
                 return front;
             }
 
