@@ -4,8 +4,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq {space :::p, par l {seq l {par t:::p {comp label1::::93:x, comp MergeSort::::93:x}, space :::p, par l {seq {comp Quicksort:::p:86:p, space :::p, comp selection:::p::p, space u:::p, comp heapsort:::p::p}, seq {space :29:29:p, comp textField2:::p:224:p}}}, seq l {par t:::p {comp label2:::::x, comp button3:::::x}, space :::p, par l:::p {comp sorttex::::229:x, comp textField1::::229:x}}, par t:l {seq {comp sort:::p:63:p, space :::p, comp button1:::p:90:p, space :p:5:p, comp scrollPane1:::p:202:p}, comp table1:::p:367:p}, comp Swap::l:p:369:p}, space :p:3:p}}"
-			"$verticalGroup": "par l {seq l {space :::p, comp table1:::p::p, space :::p, par b {comp button1::b:p::p, comp sort::b:p::p, comp scrollPane1::l:::x}, space :::p, par b {comp label1::b:p::p, comp textField2::b:p::p}, space :::p, par b {comp MergeSort::b:p::p, comp Quicksort::b:p::p, comp selection::b:p::p, comp heapsort::b:p::p}, space :::p, par b {comp button3::b:p::p, comp sorttex::b:p::p}, space :::p, par b {comp label2::b:p::p, comp textField1::b:p:15:p}, space :::p, comp Swap:::p::p, space :p:3:p}}"
+			"$horizontalGroup": "par l {seq {space :::p, par l {seq l {par l {comp label2:::p:119:p, comp sort:::p:128:p}, space u:::x, par l:::p {comp sorttex::::229:x, comp textField1::::229:x}}, seq l {par t:::p {comp label1::::93:x, comp MergeSort::::93:x}, space :::p, par l {seq {comp Quicksort:::p:86:p, space :::p, comp selection:::p::p, space u:::p, comp heapsort:::p::p, space :0:0:x}, seq {space :29:29:p, comp textField2::::259:x}, seq t {space :0:159:x, comp scrollPane1:::p:129:p}}}, comp table1::l::387:x, seq {par l {comp Swap:::p:369:p, seq {comp button3:::p:93:p, space :::p, comp button2:::p::p, space :::p, comp button1:::p:90:p}}, space :0:18:x}}, space :p:15:p}}"
+			"$verticalGroup": "par l {seq l {space :::p, comp table1:::p::p, space :::p, par b {comp button3::b:p::p, comp button2::b:p::p, comp button1::b:p::p, comp scrollPane1::b:::x}, space :::p, par b {comp label1::b:p::p, comp textField2::b:p::p}, space :::p, par b {comp MergeSort::b:p::p, comp Quicksort::b:p::p, comp selection::b:p::p, comp heapsort::b:p::p}, space :::p, par b {comp sorttex::b:p::p, comp sort::b:p::p}, space :::p, par b {comp label2::b:p::p, comp textField1::b:p:15:p}, space :::p, comp Swap:::p::p, space :p:3:p}}"
 		} ) {
 			name: "this"
 			"title": "BINARY HEAP"
@@ -175,9 +175,14 @@ new FormModel {
 				"text": "Sort"
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "sortActionPerformed", true ) )
 			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button2"
+				"text": "Reset"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button2ActionPerformed", true ) )
+			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 20, 10 )
-			"size": new java.awt.Dimension( 380, 385 )
+			"size": new java.awt.Dimension( 410, 385 )
 		} )
 	}
 }

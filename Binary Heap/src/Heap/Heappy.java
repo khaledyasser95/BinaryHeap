@@ -18,7 +18,7 @@ public class Heappy   {
 
     private ArrayList<Integer> Tree = new ArrayList<Integer>();
 
-    int test=0;
+    //  int test=0;
     int x=0;
 
     public ArrayList<Integer> getTree() {
@@ -155,7 +155,7 @@ public class Heappy   {
 
     public void insert(int value)
     {
-        test++;
+        // test++;
         rep.Sizeinc();
         int index = rep.getSize()-1;
         Tree.add(index,value);

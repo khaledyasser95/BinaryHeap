@@ -60,7 +60,7 @@ public class Heap_Gui extends JFrame {
                 print();
             }
         } catch (Exception x) {
-            System.out.println(x.getMessage());
+            System.out.println("INPUT" + x.getMessage());
         }
     }
 
@@ -153,6 +153,16 @@ public class Heap_Gui extends JFrame {
         Swap.setText(heap.swappy);
     }
 
+    private void button2ActionPerformed(ActionEvent e) {
+        // TODO add your code here
+        heap.getTree().clear();
+        heap.rep.setSize(0);
+        OP.clear();
+        textField1.setText("");
+        textField2.setText("");
+        sorttex.setText("");
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - khaled samy
@@ -172,6 +182,7 @@ public class Heap_Gui extends JFrame {
         heapsort = new JRadioButton();
         table1 = new JTable();
         sort = new JButton();
+        button2 = new JButton();
 
         //======== this ========
         setTitle("BINARY HEAP");
@@ -266,7 +277,6 @@ public class Heap_Gui extends JFrame {
             boolean[] columnEditable = new boolean[]{
                     false, true, true, true
             };
-
             @Override
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return columnEditable[columnIndex];
@@ -289,6 +299,10 @@ public class Heap_Gui extends JFrame {
         sort.setText("Sort");
         sort.addActionListener(e -> sortActionPerformed(e));
 
+        //---- button2 ----
+        button2.setText("Reset");
+        button2.addActionListener(e -> button2ActionPerformed(e));
+
         GroupLayout contentPaneLayout = new GroupLayout(contentPane);
         contentPane.setLayout(contentPaneLayout);
         contentPaneLayout.setHorizontalGroup(
@@ -296,6 +310,14 @@ public class Heap_Gui extends JFrame {
                         .addGroup(contentPaneLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(contentPaneLayout.createParallelGroup()
+                                        .addGroup(contentPaneLayout.createSequentialGroup()
+                                                .addGroup(contentPaneLayout.createParallelGroup()
+                                                        .addComponent(label2, GroupLayout.PREFERRED_SIZE, 119, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(sort, GroupLayout.PREFERRED_SIZE, 128, GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                                        .addComponent(sorttex, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+                                                        .addComponent(textField1, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)))
                                         .addGroup(contentPaneLayout.createSequentialGroup()
                                                 .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
                                                         .addComponent(label1, GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
@@ -307,28 +329,26 @@ public class Heap_Gui extends JFrame {
                                                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                                                 .addComponent(selection)
                                                                 .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                .addComponent(heapsort))
+                                                                .addComponent(heapsort)
+                                                                .addGap(0, 0, Short.MAX_VALUE))
                                                         .addGroup(contentPaneLayout.createSequentialGroup()
                                                                 .addGap(29, 29, 29)
-                                                                .addComponent(textField2, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE))))
+                                                                .addComponent(textField2, GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE))
+                                                        .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
+                                                                .addGap(0, 159, Short.MAX_VALUE)
+                                                                .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 129, GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(table1, GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
                                         .addGroup(contentPaneLayout.createSequentialGroup()
-                                                .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
-                                                        .addComponent(label2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(button3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                                        .addComponent(sorttex, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
-                                                        .addComponent(textField1, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)))
-                                        .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                                                .addGroup(contentPaneLayout.createSequentialGroup()
-                                                        .addComponent(sort, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
-                                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(button1, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(5, 5, 5)
-                                                        .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 202, GroupLayout.PREFERRED_SIZE))
-                                                .addComponent(table1, GroupLayout.PREFERRED_SIZE, 367, GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(Swap, GroupLayout.PREFERRED_SIZE, 369, GroupLayout.PREFERRED_SIZE))
-                                .addGap(3, 3, 3))
+                                                .addGroup(contentPaneLayout.createParallelGroup()
+                                                        .addComponent(Swap, GroupLayout.PREFERRED_SIZE, 369, GroupLayout.PREFERRED_SIZE)
+                                                        .addGroup(contentPaneLayout.createSequentialGroup()
+                                                                .addComponent(button3, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(button2)
+                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(button1, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)))
+                                                .addGap(0, 18, Short.MAX_VALUE)))
+                                .addGap(15, 15, 15))
         );
         contentPaneLayout.setVerticalGroup(
                 contentPaneLayout.createParallelGroup()
@@ -337,8 +357,9 @@ public class Heap_Gui extends JFrame {
                                 .addComponent(table1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(button3)
+                                        .addComponent(button2)
                                         .addComponent(button1)
-                                        .addComponent(sort)
                                         .addComponent(scrollPane1))
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
@@ -352,8 +373,8 @@ public class Heap_Gui extends JFrame {
                                         .addComponent(heapsort))
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(button3)
-                                        .addComponent(sorttex, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(sorttex, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(sort))
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                         .addComponent(label2)
@@ -387,5 +408,6 @@ public class Heap_Gui extends JFrame {
     private JRadioButton heapsort;
     private JTable table1;
     private JButton sort;
+    private JButton button2;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }
