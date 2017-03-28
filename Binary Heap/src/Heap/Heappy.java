@@ -423,6 +423,13 @@ public class Heappy   {
 
     }
 
+    public void Quicksort() {
+        time.start();
+        quickSort(Tree, 0, rep.getSize() - 1);
+        time.end();
+        System.out.println("quickSort took " + time.execution + " Nano Sec");
+        com.setQuicksort(time.execution);
+    }
 
 }//end heappy
 

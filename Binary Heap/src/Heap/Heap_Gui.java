@@ -124,7 +124,7 @@ public class Heap_Gui extends JFrame {
         // TODO add your code here
 
         if (Quicksort.isSelected()) {
-
+            heap.Quicksort();
             table1.setValueAt(heap.com.getQuicksort() + " ns", quickindex, 0);
             sortprint();
             quickindex++;
