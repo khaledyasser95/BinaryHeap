@@ -30,6 +30,7 @@ public class MergeSort {
     }
 
     public void merge_sort(int low, int high) {
+        heap.time.start();
         int mid;
         //if there is only one element to sort. In this case the list is already sorted.
         if (low < high) {
@@ -42,6 +43,9 @@ public class MergeSort {
             // Combine
             merge(low, mid, high);
         }
+        heap.time.end();
+        System.out.println(heap.time.execution + "Nano Sec");
+        heap.com.setMergeSort(heap.time.execution);
     }
 
     public void merge(int low, int mid, int high) {

@@ -30,7 +30,6 @@ public class Heap_Gui extends JFrame {
     int i = 0;
     ArrayList<String> OP = new ArrayList<>();
 
-    Representation rep = new Representation();
 
     private void textArea1KeyTyped(KeyEvent e) {
         // TODO add your code here

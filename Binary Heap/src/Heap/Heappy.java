@@ -33,15 +33,13 @@ public class Heappy   {
     }
 
     void merge() {
-        time.start();
+
         MergeSort merge = new MergeSort(this, Tree);
         merge.ini();
         merge.merge_sort(0, rep.getSize() - 1);
         sorttext = merge.printmerge(rep.getSize());
         swappy = "Tree is sorted ";
-        time.end();
-        System.out.println(time.execution + "Nano Sec");
-        com.setMergeSort(time.execution);
+
     }
 
     public static void main(String[] args) {
