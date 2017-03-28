@@ -80,20 +80,24 @@ public class QuickSort {
         //for algorithm to work
         //if(n==1) return ;
         int n=last-first+1;
-        int pivot= lastElementPivot(list,n);
-        int front=0;
+        if(n==0||n==1)
+        {
+            return;
+        }
+        int pivot= list[last];
+        int front=first;
         //because pivot is in n-1
-        int end=n-2;
-        int switched;
+        int end=last-1;
+        int switched=0;
         if(end<0)
         {
             return;
         }
         if(n==2)
         {
-            if(list[0]<list[1])
+            if(list[first]<list[last])
             {
-                swap(list,0,1);
+                swap(list,front,last);
                 return;
             }
             else
@@ -139,16 +143,16 @@ public class QuickSort {
 
         }
         //L: equal case
-        int pivotIndex;
-        pivotIndex=insertPivot(list,n,front);
+        int pivotIndex=last;
+        pivotIndex=insertPivot(list,pivotIndex,front);
 
-        if(n!=1)
+        if(n>1)
         {
-            System.out.println(pivotIndex);
+           /* System.out.println(pivotIndex-1);
             System.out.println(n-pivotIndex+1);
-
-            quickSort(list,0,pivotIndex);
-            quickSort(list,pivotIndex,n-pivotIndex);
+            */
+            quickSort(list,first,pivotIndex-1);
+            quickSort(list,pivotIndex+1,last);
 
         }
 
@@ -174,18 +178,19 @@ public class QuickSort {
 
     }
         //puts pivot in its right place and returns its index
-        static int insertPivot(int list[],int n,int front)
+        static int insertPivot(int list[],int pivotIndex,int front)
         {
             //front will be now pointing at last element in the left array or 1st in right array
-            if(list[front]>=list[n-1])
+            if(list[front]>=list[pivotIndex])
             {
-                swap(list,n-1,front+1);
+                //swap pivot with the next element to front
+                swap(list,pivotIndex,front+1);
                 return front+1;
             }
 
             else
             {
-                swap(list,n-1, front);
+                swap(list,pivotIndex,front);
                 return front;
             }
 
