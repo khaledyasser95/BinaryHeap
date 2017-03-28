@@ -1,8 +1,6 @@
 package Heap;
 
-import javax.swing.*;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -72,6 +70,7 @@ public class Heappy   {
             System.out.println("4. GUI");
             System.out.println("5. heap sort");
             System.out.println("6. selection sort");
+            System.out.println("7. quick sort");
             int choice = scan.nextInt();
             switch (choice) {
                 case 1:
@@ -114,6 +113,13 @@ public class Heappy   {
                     break;
                 case 6:
                     selectionSort();
+                    break;
+                case 7:
+                    time.start();
+                    quickSort(Tree,0,rep.getSize()-1);
+                    time.end();
+                    System.out.println("quickSort took " + time.execution + " Nano Sec");
+                    com.setQuicksort(time.execution);
                     break;
                 default:
                     System.out.println("Wrong Entry \n ");
@@ -289,6 +295,135 @@ public class Heappy   {
         com.setSelection(time.execution);
     }
 
-}
+
+
+    public void  quickSort(ArrayList<Integer> list, int first, int last)
+    {
+
+
+       /* if(n==0)
+        {
+            System.out.print("zero");
+        }*/
+        //if any other method used for generating pivot it should be swapped with last element in array after choosing it
+        //for algorithm to work
+        //if(n==1) return ;
+        int n=last-first+1;
+        if(n==0||n==1)
+        {
+            return;
+        }
+        int pivot= list.get(last);
+        int front=first;
+        //because pivot is in n-1
+        int end=last-1;
+        int switched=0;
+        if(end<0)
+        {
+            return;
+        }
+        if(n==2)
+        {
+            if(list.get(first) < list.get(last))
+            {
+                swap(list,front,last);
+                return;
+            }
+            else
+            {
+                return;
+            }
+
+        }
+        while(front<end)
+        {
+            //if front index <= pivot we will swap it to be on it right side
+            if(list.get(front) <=pivot)
+            {
+                //if end index is larger than pivot we will swap it to be on the left side
+
+                switched=0;
+                while(end>front && switched==0)
+                {
+
+                    if(list.get(end) >pivot)
+                    {
+                        swap(list,front,end);
+                        front++;
+                        end--;
+                        switched=1;
+                    }
+                    else
+                    {
+                        end--;
+                    }
+
+
+                }
+
+            }
+            else if(list.get(front) >pivot)
+            {
+                front++;
+            }
+
+
+        }
+        //L: equal case
+        int pivotIndex=last;
+        pivotIndex=insertPivot(list,pivotIndex,front);
+
+        if(n>1)
+        {
+           /* System.out.println(pivotIndex-1);
+            System.out.println(n-pivotIndex+1);
+            */
+            quickSort(list,first,pivotIndex-1);
+            quickSort(list,pivotIndex+1,last);
+
+        }
+
+
+    }
+    //didn't work java call by value
+    /*
+    static void swap(int first, int second)
+        {
+            int temp=first;
+            first=second;
+            second=temp;
+            return;
+
+        }
+        */
+    static void swap(ArrayList<Integer> list, int first, int second)
+    {
+        int temp= list.get(first);
+        list.set(first, list.get(second));
+        list.set(second, temp);
+        return;
+
+    }
+    //puts pivot in its right place and returns its index
+    static int insertPivot(ArrayList<Integer> list, int pivotIndex, int front)
+    {
+        //front will be now pointing at last element in the left array or 1st in right array
+        if(list.get(front) >= list.get(pivotIndex))
+        {
+            //swap pivot with the next element to front
+            swap(list,pivotIndex,front+1);
+            return front+1;
+        }
+
+        else
+        {
+            swap(list,pivotIndex,front);
+            return front;
+        }
+
+    }
+
+
+}//end heappy
 
 
